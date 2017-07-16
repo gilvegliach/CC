@@ -3,7 +3,8 @@ import java.io.*;
 
 public class Main {
   public static void main(String[] args) throws Exception {
-    InputReader in = new InputReader(System.in);
+    InputStream is = args.length > 0 ? new FileInputStream(args[0]) : System.in;
+    InputReader in = new InputReader(is);
     OutputWriter out = new OutputWriter(System.out);
     int tc = in.nextInt();
     for (int t = 1; t <= tc; t++) {
