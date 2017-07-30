@@ -1,11 +1,9 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
-  public static void main(String[] args) throws Exception {
-    InputStream is = args.length > 0 ? new FileInputStream(args[0]) : System.in;
-    InputReader in = new InputReader(is);
-    OutputWriter out = new OutputWriter(System.out);
+public class Main implements Runnable {
+  @Override
+  public void run() {
     int tc = in.nextInt();
     for (int t = 1; t <= tc; t++) {
       out.println(solution());
@@ -15,6 +13,20 @@ public class Main {
 
   static String solution() {
     return "OK";
+  }
+
+
+  InputReader in; OutputWriter out;
+  Main(InputReader iin, OutputWriter oout) {
+    in = iin; out = oout;
+  }
+
+  public static void main(String[] args) throws Exception {
+    InputStream is = args.length > 0 ? new FileInputStream(args[0]) : System.in;
+    InputReader in = new InputReader(is);
+    OutputWriter out = new OutputWriter(System.out);
+    Main main = new Main(in, out);
+    new Thread(null, main, "Main", 1 << 26).start(); // 64 mb stack size
   }
 }
 
