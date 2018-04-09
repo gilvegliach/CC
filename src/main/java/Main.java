@@ -188,6 +188,14 @@ class OutputWriter {
     writer.println();
   }
 
+  void printf(String format, Object... objects) {
+    writer.printf(format, objects);
+  }
+
+  void printfln(String format, Object... objects) {
+    writer.printf(format + "\n", objects);
+  }
+
   void close() {
     writer.close();
   }
